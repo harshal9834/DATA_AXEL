@@ -7,7 +7,8 @@ import {
 import { useState } from "react";
 import AIAssistantFab from "./ai-assistant-fab";
 
-const nav = [
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
+const nav: NavItem[] = [
   { to: "/app", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/app/projects", label: "Projects", icon: FolderKanban },
   { to: "/app/deepsearch", label: "DeepSearch", icon: Search },
@@ -17,7 +18,7 @@ const nav = [
   { to: "/app/docs", label: "Documentation", icon: FileText },
   { to: "/app/assistant", label: "AI Assistant", icon: Sparkles },
   { to: "/app/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 export default function AppShell() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
