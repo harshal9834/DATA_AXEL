@@ -20,6 +20,7 @@ import { Route as AppDocsRouteImport } from './routes/app.docs'
 import { Route as AppDeepsearchRouteImport } from './routes/app.deepsearch'
 import { Route as AppAssistantRouteImport } from './routes/app.assistant'
 import { Route as AppArchitectureRouteImport } from './routes/app.architecture'
+import { Route as AppAgentsRouteImport } from './routes/app.agents'
 import { Route as AppProjectsProjectIdRouteImport } from './routes/app.projects.$projectId'
 
 const AppRoute = AppRouteImport.update({
@@ -77,6 +78,11 @@ const AppArchitectureRoute = AppArchitectureRouteImport.update({
   path: '/architecture',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAgentsRoute = AppAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProjectsProjectIdRoute = AppProjectsProjectIdRouteImport.update({
   id: '/$projectId',
   path: '/$projectId',
@@ -86,6 +92,7 @@ const AppProjectsProjectIdRoute = AppProjectsProjectIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/agents': typeof AppAgentsRoute
   '/app/architecture': typeof AppArchitectureRoute
   '/app/assistant': typeof AppAssistantRoute
   '/app/deepsearch': typeof AppDeepsearchRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/agents': typeof AppAgentsRoute
   '/app/architecture': typeof AppArchitectureRoute
   '/app/assistant': typeof AppAssistantRoute
   '/app/deepsearch': typeof AppDeepsearchRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/agents': typeof AppAgentsRoute
   '/app/architecture': typeof AppArchitectureRoute
   '/app/assistant': typeof AppAssistantRoute
   '/app/deepsearch': typeof AppDeepsearchRoute
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/agents'
     | '/app/architecture'
     | '/app/assistant'
     | '/app/deepsearch'
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/agents'
     | '/app/architecture'
     | '/app/assistant'
     | '/app/deepsearch'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/app/agents'
     | '/app/architecture'
     | '/app/assistant'
     | '/app/deepsearch'
@@ -253,6 +265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppArchitectureRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/agents': {
+      id: '/app/agents'
+      path: '/agents'
+      fullPath: '/app/agents'
+      preLoaderRoute: typeof AppAgentsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/projects/$projectId': {
       id: '/app/projects/$projectId'
       path: '/$projectId'
@@ -276,6 +295,7 @@ const AppProjectsRouteWithChildren = AppProjectsRoute._addFileChildren(
 )
 
 interface AppRouteChildren {
+  AppAgentsRoute: typeof AppAgentsRoute
   AppArchitectureRoute: typeof AppArchitectureRoute
   AppAssistantRoute: typeof AppAssistantRoute
   AppDeepsearchRoute: typeof AppDeepsearchRoute
@@ -288,6 +308,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAgentsRoute: AppAgentsRoute,
   AppArchitectureRoute: AppArchitectureRoute,
   AppAssistantRoute: AppAssistantRoute,
   AppDeepsearchRoute: AppDeepsearchRoute,
