@@ -94,7 +94,7 @@ function ProjectDetail() {
         <div className="card-premium p-6 lg:col-span-2">
           <h3 className="text-sm font-bold">Objectives</h3>
           <ul className="mt-3 space-y-2">
-            {project.objectives.map((o) => (
+            {project.objectives.map((o: string) => (
               <li key={o} className="flex items-start gap-2 text-sm">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                 <span>{o}</span>
@@ -107,7 +107,7 @@ function ProjectDetail() {
         <div className="card-premium p-6">
           <h3 className="text-sm font-bold">Target Users</h3>
           <div className="mt-3 flex flex-wrap gap-1.5">
-            {project.users.map((u) => (
+            {project.users.map((u: string) => (
               <span key={u} className="rounded-lg border border-border/60 bg-white px-2 py-1 text-[11px] font-medium">{u}</span>
             ))}
           </div>
