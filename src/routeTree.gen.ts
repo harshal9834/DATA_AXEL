@@ -9,38 +9,180 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppResourcesRouteImport } from './routes/app.resources'
+import { Route as AppProjectsRouteImport } from './routes/app.projects'
+import { Route as AppKnowledgeRouteImport } from './routes/app.knowledge'
+import { Route as AppDocsRouteImport } from './routes/app.docs'
+import { Route as AppDeepsearchRouteImport } from './routes/app.deepsearch'
+import { Route as AppAssistantRouteImport } from './routes/app.assistant'
+import { Route as AppArchitectureRouteImport } from './routes/app.architecture'
+import { Route as AppProjectsProjectIdRouteImport } from './routes/app.projects.$projectId'
 
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppResourcesRoute = AppResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsRoute = AppProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppKnowledgeRoute = AppKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDocsRoute = AppDocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDeepsearchRoute = AppDeepsearchRouteImport.update({
+  id: '/deepsearch',
+  path: '/deepsearch',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssistantRoute = AppAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppArchitectureRoute = AppArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsProjectIdRoute = AppProjectsProjectIdRouteImport.update({
+  id: '/$projectId',
+  path: '/$projectId',
+  getParentRoute: () => AppProjectsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/architecture': typeof AppArchitectureRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/deepsearch': typeof AppDeepsearchRoute
+  '/app/docs': typeof AppDocsRoute
+  '/app/knowledge': typeof AppKnowledgeRoute
+  '/app/projects': typeof AppProjectsRouteWithChildren
+  '/app/resources': typeof AppResourcesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/': typeof AppIndexRoute
+  '/app/projects/$projectId': typeof AppProjectsProjectIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/architecture': typeof AppArchitectureRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/deepsearch': typeof AppDeepsearchRoute
+  '/app/docs': typeof AppDocsRoute
+  '/app/knowledge': typeof AppKnowledgeRoute
+  '/app/projects': typeof AppProjectsRouteWithChildren
+  '/app/resources': typeof AppResourcesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app': typeof AppIndexRoute
+  '/app/projects/$projectId': typeof AppProjectsProjectIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/app/architecture': typeof AppArchitectureRoute
+  '/app/assistant': typeof AppAssistantRoute
+  '/app/deepsearch': typeof AppDeepsearchRoute
+  '/app/docs': typeof AppDocsRoute
+  '/app/knowledge': typeof AppKnowledgeRoute
+  '/app/projects': typeof AppProjectsRouteWithChildren
+  '/app/resources': typeof AppResourcesRoute
+  '/app/settings': typeof AppSettingsRoute
+  '/app/': typeof AppIndexRoute
+  '/app/projects/$projectId': typeof AppProjectsProjectIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/architecture'
+    | '/app/assistant'
+    | '/app/deepsearch'
+    | '/app/docs'
+    | '/app/knowledge'
+    | '/app/projects'
+    | '/app/resources'
+    | '/app/settings'
+    | '/app/'
+    | '/app/projects/$projectId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app/architecture'
+    | '/app/assistant'
+    | '/app/deepsearch'
+    | '/app/docs'
+    | '/app/knowledge'
+    | '/app/projects'
+    | '/app/resources'
+    | '/app/settings'
+    | '/app'
+    | '/app/projects/$projectId'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/architecture'
+    | '/app/assistant'
+    | '/app/deepsearch'
+    | '/app/docs'
+    | '/app/knowledge'
+    | '/app/projects'
+    | '/app/resources'
+    | '/app/settings'
+    | '/app/'
+    | '/app/projects/$projectId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +190,120 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/resources': {
+      id: '/app/resources'
+      path: '/resources'
+      fullPath: '/app/resources'
+      preLoaderRoute: typeof AppResourcesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/projects': {
+      id: '/app/projects'
+      path: '/projects'
+      fullPath: '/app/projects'
+      preLoaderRoute: typeof AppProjectsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/knowledge': {
+      id: '/app/knowledge'
+      path: '/knowledge'
+      fullPath: '/app/knowledge'
+      preLoaderRoute: typeof AppKnowledgeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/docs': {
+      id: '/app/docs'
+      path: '/docs'
+      fullPath: '/app/docs'
+      preLoaderRoute: typeof AppDocsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/deepsearch': {
+      id: '/app/deepsearch'
+      path: '/deepsearch'
+      fullPath: '/app/deepsearch'
+      preLoaderRoute: typeof AppDeepsearchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assistant': {
+      id: '/app/assistant'
+      path: '/assistant'
+      fullPath: '/app/assistant'
+      preLoaderRoute: typeof AppAssistantRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/architecture': {
+      id: '/app/architecture'
+      path: '/architecture'
+      fullPath: '/app/architecture'
+      preLoaderRoute: typeof AppArchitectureRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/projects/$projectId': {
+      id: '/app/projects/$projectId'
+      path: '/$projectId'
+      fullPath: '/app/projects/$projectId'
+      preLoaderRoute: typeof AppProjectsProjectIdRouteImport
+      parentRoute: typeof AppProjectsRoute
+    }
   }
 }
 
+interface AppProjectsRouteChildren {
+  AppProjectsProjectIdRoute: typeof AppProjectsProjectIdRoute
+}
+
+const AppProjectsRouteChildren: AppProjectsRouteChildren = {
+  AppProjectsProjectIdRoute: AppProjectsProjectIdRoute,
+}
+
+const AppProjectsRouteWithChildren = AppProjectsRoute._addFileChildren(
+  AppProjectsRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppArchitectureRoute: typeof AppArchitectureRoute
+  AppAssistantRoute: typeof AppAssistantRoute
+  AppDeepsearchRoute: typeof AppDeepsearchRoute
+  AppDocsRoute: typeof AppDocsRoute
+  AppKnowledgeRoute: typeof AppKnowledgeRoute
+  AppProjectsRoute: typeof AppProjectsRouteWithChildren
+  AppResourcesRoute: typeof AppResourcesRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppArchitectureRoute: AppArchitectureRoute,
+  AppAssistantRoute: AppAssistantRoute,
+  AppDeepsearchRoute: AppDeepsearchRoute,
+  AppDocsRoute: AppDocsRoute,
+  AppKnowledgeRoute: AppKnowledgeRoute,
+  AppProjectsRoute: AppProjectsRouteWithChildren,
+  AppResourcesRoute: AppResourcesRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
