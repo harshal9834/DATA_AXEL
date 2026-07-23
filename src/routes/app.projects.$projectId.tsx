@@ -31,7 +31,7 @@ export const Route = createFileRoute("/app/projects/$projectId")({
 const tabs = ["Overview", "Research", "Architecture", "Resources", "Timeline", "Documentation", "AI Chat"] as const;
 
 function ProjectDetail() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as any;
   const [tab, setTab] = useState<(typeof tabs)[number]>("Overview");
 
   return (
