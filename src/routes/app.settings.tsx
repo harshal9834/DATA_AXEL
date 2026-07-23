@@ -56,8 +56,8 @@ function Profile() {
         <button type="button" className="rounded-lg border border-border/70 bg-white px-3 py-1.5 text-xs font-medium hover:bg-accent">Change avatar</button>
       </div>
       {[
-        { l: "Full name", v: "Aarav Ramanujan" },
-        { l: "Email", v: "aarav@copilot.ai" },
+        { l: "Full name", v: "Harshal Mahajan" },
+        { l: "Email", v: "team@indiapreneur.com" },
         { l: "Role", v: "Research Lead" },
       ].map((f) => (
         <label key={f.l} className="block">

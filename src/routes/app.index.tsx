@@ -42,7 +42,7 @@ function Dashboard() {
           <div>
             <div className="flex items-center gap-2 text-xs font-medium text-primary">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              Good Morning, Aarav
+              Good Morning, Harshal
             </div>
             <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
               Welcome back — <span className="text-gradient-brand">let's build something big.</span>

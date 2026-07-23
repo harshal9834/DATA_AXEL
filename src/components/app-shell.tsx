@@ -103,10 +103,10 @@ export default function AppShell() {
               <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-gradient-brand" />
             </button>
             <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-white/80 py-1 pl-1 pr-3">
-              <div className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-brand text-xs font-bold text-white">AR</div>
+              <div className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-brand text-xs font-bold text-white">HM</div>
               <div className="hidden text-xs md:block">
-                <div className="font-semibold leading-tight">Aarav R.</div>
-                <div className="text-muted-foreground leading-tight">Pro</div>
+                <div className="font-semibold leading-tight">Harshal M.</div>
+                <div className="text-muted-foreground leading-tight">Lead</div>
               </div>
             </div>
             <Link to="/" className="grid h-9 w-9 place-items-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground">
